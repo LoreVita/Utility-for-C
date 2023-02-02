@@ -1,0 +1,81 @@
+/*
+SCOPO: lettura da terminale di un singolo valore decimale come stringa e conseguente conversione a float 
+*/
+
+float get_float_from_kbd(void)
+   {
+      char s[STRING_LENGHT];
+      scanf("%s",s); return atof(s);
+   }
+   
+/*
+SCOPO: lettura da file .txt di un singolo valore decimale come stringa e conseguente conversione a float 
+*/
+
+float get_float_from_file_txt(pfile pf)
+   {
+      char s[STRING_LENGHT];
+      fscanf(pf,"%s",s); return atof(s);
+   }
+
+/*
+SCOPO: lettura da file .txt di un singolo valore come stringa e conseguente conversione a unsigned 
+*/
+
+unsigned get_unsigned_from_file_txt(pfile pf)
+   {
+      char s[STRING_LENGHT];
+      fscanf(pf,"%s",s); return atoi(s);
+   }
+
+/*
+SCOPO: Lettura a vuoto di un numero specificato di righe da un file
+*/
+void discard_rows_from_file(pfile pf,unsigned n)
+   {  char     string[STRING_LENGHT];
+      unsigned i;
+      for(i=0; i<n; i++) fscanf(pf,"%s",string);
+   }
+   
+/*
+SCOPO: Riceve una stringa di testo che dice di richiedere un intero e legge l'intero come stringa e poi conversione tramite atoi
+*/
+int get_int_from_kbd(pchar string_text)
+   {
+      char string[STRING_LENGHT];
+
+      printf("%s: ",string_text);
+      scanf("%s",string);
+      return atoi(string);
+   }
+   
+/*
+SCOPO: domanda di ricevere un valore da tastiera che sia un intero positivo finché non legge un valore tale e lo restitisce
+       dopo una conversione di sicurezza
+*/
+int get_positive_int_from_kbd(pchar pmessage_text)
+  {
+    char  string[STRING_LENGHT];
+    int   n;
+    
+    do
+      {
+        printf("%s: ",pmessage_text);
+        scanf("%s",string);
+      }
+    while ( (n = atoi(string)) <= 0 );
+    return n;
+  }
+
+/*
+SCOPO:  domanda di ricevere una stringa di testo finché non acquisisce una stringa non nulla
+*/
+void get_string(pchar pmessage_text, pchar string)
+  {
+    do 
+      {
+        printf("%s: ",pmessage_text);
+        scanf("%s",string);
+      }
+    while(!string[0]);
+  }
